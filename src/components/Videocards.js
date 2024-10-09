@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Videocards = ({ item }) => {
+  const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
   if (!item) return;
   console.log(item);
 
@@ -50,12 +52,12 @@ const Videocards = ({ item }) => {
     }
   };
   return (
-    <div className=" rounded-lg ">
-      <div>
-        <img   className="w-96 rounded-xl" src={thumbnails.medium.url} alt="" />
+    <div className={ `  ${!isMenuOpen ? 'relative left-10 rounded-lg cursor-pointer hover:bg-gray-100':'rounded-lg cursor-pointer  hover:bg-gray-100' }`}>
+      <div >
+        <img   className={` ${!isMenuOpen ? ' relative w-[440px] rounded-xl':'w-96 rounded-xl'}`} src={thumbnails.medium.url} alt="" />
       </div>
       <div className="py-4">
-        <h3 className="font-medium w-80 break-words ">{localized.title}</h3>
+        <h3 className="font-semibold  text-lg w-96 break-words ">{localized.title}</h3>
         <span>{channelTitle}</span>
         <div className="flex text-[#818181] gap-2 items-center">
           <span>{formatViews(statistics.viewCount)}</span>
