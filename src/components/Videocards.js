@@ -1,0 +1,70 @@
+import React from "react";
+
+const Videocards = ({ item }) => {
+  if (!item) return;
+  console.log(item);
+
+  const { snippet, statistics } = item;
+  const { thumbnails, channelTitle, publishedAt, description, localized } =
+    snippet;
+  const timeAgo = (dateString) => {
+    const date = new Date(dateString); // Convert input string to Date object
+    const now = new Date(); // Get the current date and time
+    const diffInSeconds = Math.floor((now - date) / 1000); // Time difference in seconds
+
+    // Define simpler time intervals in seconds
+    const secondsInMinute = 60;
+    const secondsInHour = 3600;
+    const secondsInDay = 86400;
+    const secondsInMonth = 2592000;
+    const secondsInYear = 31536000;
+
+    // Check time difference and return appropriate message
+    if (diffInSeconds < secondsInMinute) {
+      return "Just now"; // Less than 1 minute ago
+    } else if (diffInSeconds < secondsInHour) {
+      const minutes = Math.floor(diffInSeconds / secondsInMinute);
+      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+    } else if (diffInSeconds < secondsInDay) {
+      const hours = Math.floor(diffInSeconds / secondsInHour);
+      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    } else if (diffInSeconds < secondsInMonth) {
+      const days = Math.floor(diffInSeconds / secondsInDay);
+      return `${days} day${days > 1 ? "s" : ""} ago`;
+    } else if (diffInSeconds < secondsInYear) {
+      const months = Math.floor(diffInSeconds / secondsInMonth);
+      return `${months} month${months > 1 ? "s" : ""} ago`;
+    } else {
+      const years = Math.floor(diffInSeconds / secondsInYear);
+      return `${years} year${years > 1 ? "s" : ""} ago`;
+    }
+  };
+  const formatViews = (viewCount) => {
+    const views = parseInt(viewCount); // Convert viewCount to a number
+    if (views >= 1000000) {
+      return (views / 1000000).toFixed(0) + "M views";
+    } else if (views >= 1000) {
+      return (views / 1000).toFixed(0) + "K views";
+    } else {
+      return views + " views";
+    }
+  };
+  return (
+    <div className=" rounded-lg ">
+      <div>
+        <img   className="w-96 rounded-xl" src={thumbnails.medium.url} alt="" />
+      </div>
+      <div className="py-4">
+        <h3 className="font-medium w-80 break-words ">{localized.title}</h3>
+        <span>{channelTitle}</span>
+        <div className="flex text-[#818181] gap-2 items-center">
+          <span>{formatViews(statistics.viewCount)}</span>
+          <span>•</span>
+          <p>{timeAgo(publishedAt)}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Videocards;
