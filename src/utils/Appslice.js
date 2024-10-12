@@ -12,9 +12,12 @@ const Appslice=createSlice({
         },
         closeMenu:(state)=>{
             state.isMenuOpen=false
+        },
+        removeButtonList:(state,action)=>{
+            state.issidebar=false
         }
 
     },
 })
-export  const{toggleMenu,closeMenu}=Appslice.actions;
+export  const{toggleMenu,closeMenu,removeButtonList}=Appslice.actions;
 export default Appslice.reducer

@@ -5,8 +5,8 @@ import Sidebar from './Sidebar'
 
 const MainContainer = () => {
   return (
-    <div className='pt-14 flex   '>
-   
+    <div className='pt-14 flex    '>
+  
         <VideoContainer />
     </div>
   )

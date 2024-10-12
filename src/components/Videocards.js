@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const Videocards = ({ item }) => {
   const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
   if (!item) return;
-  console.log(item);
+  // console.log(item);
 
   const { snippet, statistics } = item;
   const { thumbnails, channelTitle, publishedAt, description, localized } =
