@@ -19,7 +19,6 @@ const ButtonList = () => {
   const list = [
     "All",
     "Gaming",
-    "Telugu cinema",
     "React Router",
     "Live",
     "Music",
@@ -40,8 +39,8 @@ const ButtonList = () => {
   return(
          {issidebar} &&  (<div className={`${
           isMenuOpen
-            ? "flex gap-2  ml-10 my-2 fixed  top-16"
-            : "flex gap-2  -ml-32 my-2 fixed  top-16"
+            ? "flex gap-2 justify-center items-center   absolute  top-1"
+            : "flex gap-2  justify-center  items-center absolute  top-1"
         }`}
       >
         {list.map((list) => (

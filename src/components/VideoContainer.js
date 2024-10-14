@@ -19,9 +19,9 @@ const VideoContainer = () => {
   };
   return (
 
-    <div className={ `flex flex-wrap gap-6 p-5 pt-20  h-screen overflow-scroll   `}>
+    <div className={ `flex flex-wrap gap-6  p-5 pt-20   h-screen w-screen  overflow-scroll   `}>
       {videos.map((video) => (
-        <Link to={"/watch/"+video.id }><Videocards key={video.id} item={video} /></Link>
+        <Link to={"/watch/"+video.id } key={video.id}><Videocards  item={video} /></Link>
       ))}
     </div>
 

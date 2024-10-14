@@ -1,13 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-const Videocards = ({ item }) => {
-  const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
-  if (!item) return;
-  // console.log(item);
-
-  const { snippet, statistics } = item;
-  const { thumbnails, channelTitle, publishedAt, localized } = snippet;
+const Resultvideo = ({ search }) => {
+  if (!search) return;
   const timeAgo = (dateString) => {
     const date = new Date(dateString); // Convert input string to Date object
     const now = new Date(); // Get the current date and time
@@ -40,32 +34,45 @@ const Videocards = ({ item }) => {
       return `${years} year${years > 1 ? "s" : ""} ago`;
     }
   };
-  const formatViews = (viewCount) => {
-    const views = parseInt(viewCount); // Convert viewCount to a number
-    if (views >= 1000000) {
-      return (views / 1000000).toFixed(0) + "M views";
-    } else if (views >= 1000) {
-      return (views / 1000).toFixed(0) + "K views";
-    } else {
-      return views + " views";
-    }
-  };
+  const { snippet } = search;
+  const {
+    channelId,
+    channelTitle,
+    thumbnails,
+    title,
+    publishedAt,
+    publishTime,
+    description,
+  } = snippet;
+  // console.log(snippet);
+
   return (
-    <div className={ `  ${!isMenuOpen ? ' relative -z-20 left-10 rounded-lg cursor-pointer hover:bg-gray-100':'rounded-lg cursor-pointer  hover:bg-gray-100 ' }`}>
-      <div className="" >
-        <img   className={` ${!isMenuOpen ? ' relative w-[440px] rounded-xl':'w-96 rounded-xl'}`} src={thumbnails.maxres.url} alt="" />
-      </div>
-      <div className="py-4">
-        <h3 className="font-semibold  text-lg w-96 break-words ">{localized.title}</h3>
-        <span>{channelTitle}</span>
-        <div className="flex text-[#818181] gap-2 items-center">
-          <span>{formatViews(statistics.viewCount)}</span>
-          <span>•</span>
-          <p>{timeAgo(publishedAt)}</p>
+    <div className=" w-screen">
+      <div className="flex gap-4">
+        <div>
+          <img
+            className="w-[480px] h-[270px] rounded-lg  object-cover"
+            src={thumbnails?.high?.url}
+            alt=""
+          />
+        </div>
+        <div className="w-[800px] ">
+          <h2 className="text-xl font-medium">{title}</h2>
+          <div className="flex gap-1 mt-4">
+            <span>{channelTitle}</span>
+            <span>•</span>
+            <span>{timeAgo(publishTime)}</span>
+          </div>
+          <h1 className="mt-3 text-gray-600" >
+            {description.split(" ").length <= 20
+              ? description // If less than or equal to 20 words, show full description
+              : description.split(" ").slice(0, 20).join(" ") + "..."}
+          </h1>
         </div>
       </div>
+     
     </div>
   );
 };
 
-export default Videocards;
+export default Resultvideo;

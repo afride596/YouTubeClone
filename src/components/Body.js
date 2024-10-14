@@ -5,16 +5,17 @@ import { useSelector } from "react-redux";
 import SideBarsmall from "./SideBarsmall";
 import { Outlet } from "react-router-dom";
 import WatchPage from "./WatchPage";
+import Header from "./Header";
+import ButtonList from "./ButtonList";
 
 const Body = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const issidebar = useSelector((store) => store.app.issidebar);
   return (
     <div className="flex  top-12  ">
-      {!isMenuOpen ?"": <Sidebar />}
+       <Header />
+      {!isMenuOpen ? "" : <Sidebar />}
  
-     
-
       <Outlet />
     </div>
   );
