@@ -47,16 +47,16 @@ const Resultvideo = ({ search }) => {
   // console.log(snippet);
 
   return (
-    <div className=" w-screen">
-      <div className="flex gap-4">
-        <div>
+    <div className="   ">
+      <div className="flex gap-4  ">
+        <div className="">
           <img
             className="w-[480px] h-[270px] rounded-lg  object-cover"
             src={thumbnails?.high?.url}
             alt=""
           />
         </div>
-        <div className="w-[800px] ">
+        <div className="w-[800px ]  ">
           <h2 className="text-xl font-medium">{title}</h2>
           <div className="flex gap-1 mt-4">
             <span>{channelTitle}</span>

@@ -13,9 +13,9 @@ const Body = () => {
   const issidebar = useSelector((store) => store.app.issidebar);
   return (
     <div className="flex  top-12  ">
-       <Header />
-      {!isMenuOpen ? "" : <Sidebar />}
- 
+      <Header />
+      {!isMenuOpen ? <SideBarsmall /> : <Sidebar />}
+
       <Outlet />
     </div>
   );

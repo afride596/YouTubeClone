@@ -72,7 +72,7 @@ const Header = () => {
   };
   return (
     <div className=" flex flex-col justify-center ">
-      <div className="flex justify-between fixed w-screen    bg-white top-0   items-center h-20 ">
+      <div className="flex justify-between fixed w-screen  z-50   bg-white top-0   items-center h-20  ">
         {/* {hamburger @ logo section} */}
         <div className="flex  relative left-5 gap-4 ">
           <div
@@ -97,7 +97,7 @@ const Header = () => {
         </div>
 
         <div>
-          <div className="  relative top-3 rounded-l-full  rounded-r-full outline-none border border-gray-300">
+          <div className="  relative  top-3 rounded-l-full  rounded-r-full outline-none border border-gray-300">
             <input
               ref={inputvalue}
               className={` w-[550px]   text-black font-medium bg-[#f6f5f5]  px-8 outline-blue-400 py-3 rounded-l-full  `}
@@ -131,16 +131,16 @@ const Header = () => {
             </Link>
           </div>
           {showsuggestions && (
-            <div className="fixed z-50 bg-white ml-3 shadow-2xl w-[34rem] rounded-xl">
-              <ul className="">
+            <div className="fixed  bg-white ml-3 shadow-2xl w-[34rem] rounded-xl z-50  ">
+              <ul className=" ">
                 {suggestions.map((suggestion, index) => (
                   <Link
                     to={`/results/${encodeURIComponent(suggestion)}`}
                     onClick={() => handleSuggestionSelect(suggestion)}
                   >
                     <li
-                      className=" cursor-pointer hover:bg-[#cedde2]
-                  hover:text-black px-5 py-1"
+                      className="  cursor-pointer hover:bg-[#cedde2]
+                  hover:text-black px-5 py-1  relative "
                     >
                       🔍
                       {suggestion}
@@ -159,7 +159,6 @@ const Header = () => {
           />
         </div>
       </div>
-    
     </div>
   );
 };

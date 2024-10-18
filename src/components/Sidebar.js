@@ -6,8 +6,8 @@ const Sidebar = () => {
   const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
   if(!isMenuOpen) return null;
   return (
-    <div className="h-screen  pt-20  ">
-      <div className="w-60  relative  z-30     h-screen  overflow-hidden hover:overflow-y-scroll scroll-smooth   ">
+    <div className="h-screen  pt-20   ">
+      <div className="w-60 relative   h-screen  overflow-hidden hover:overflow-y-scroll scroll-smooth   ">
         <div className="  shadow-none  pt-3 flex  items-center border-[#00000020] border-b pb-4">
           <ul className="pl-10 font-medium flex flex-col gap-4">
             <li> <Link to="/">Home</Link>  </li>

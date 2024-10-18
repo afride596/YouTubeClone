@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
-  const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const [videos, setvideos] = useState([]);
   useEffect(() => {
     getvideo();
@@ -15,16 +15,18 @@ const VideoContainer = () => {
     const json = await data.json();
     setvideos(json.items);
 
-    // console.log(json);
+    console.log(json);
   };
   return (
-
-    <div className={ `flex flex-wrap gap-6  p-5 pt-20   h-screen w-screen  overflow-scroll   `}>
+    <div
+      className={`flex flex-wrap gap-6  p-5 pt-20   h-screen w-screen  overflow-scroll   `}
+    >
       {videos.map((video) => (
-        <Link to={"/watch/"+video.id } key={video.id}><Videocards  item={video} /></Link>
+        <Link to={"/watch/" + video.id} key={video.id}>
+          <Videocards item={video} />
+        </Link>
       ))}
     </div>
-
   );
 };
 

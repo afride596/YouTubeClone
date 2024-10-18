@@ -3,12 +3,18 @@ import { Link, useParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_RESULT } from "../utils/constants";
 import Resultvideo from "./search/Resultvideo";
 
+import { useDispatch } from "react-redux";
+import { toggleHome } from "../utils/Appslice";
+
 const Searchresults = () => {
+  // if (!searchresult) return;
   const param = useParams();
+  const dispatch = useDispatch();
 
   // console.log(param.query);
   useEffect(() => {
     searchresults(param.query);
+    dispatch(toggleHome());
   }, [param]);
 
   const [searchresult, setsearchresult] = useState([]);
@@ -24,17 +30,16 @@ const Searchresults = () => {
       console.error(err);
     }
   };
-  // if (!searchresult) return;
 
   return (
-    <div className="text-black relative  top-32 left-36  h-screen w-screen flex flex-col overflow-scroll  gap-4 ">
-     { searchresult.map((search)=>(
-      <Link  to={"/watch/"+search.id.videoId } >
-      <Resultvideo search={search} />
-      
-      </Link>
-      ))
-    }
+    <div className="text-black fixed left-80  border   top-20 overflow: visible -z-10    ">
+      <div className="h-screen w-screen overflow-scroll">
+        {searchresult.map((search) => (
+          <Link to={"/watch/" + search.id.videoId}>
+            <Resultvideo search={search} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
