@@ -47,7 +47,7 @@ const Resultvideo = ({ search }) => {
   // console.log(snippet);
 
   return (
-    <div className="   ">
+    <div className="  ">
       <div className="flex gap-4  ">
         <div className="">
           <img
@@ -63,14 +63,13 @@ const Resultvideo = ({ search }) => {
             <span>•</span>
             <span>{timeAgo(publishTime)}</span>
           </div>
-          <h1 className="mt-3 text-gray-600" >
+          <h1 className="mt-3 text-gray-600">
             {description.split(" ").length <= 20
               ? description // If less than or equal to 20 words, show full description
               : description.split(" ").slice(0, 20).join(" ") + "..."}
           </h1>
         </div>
       </div>
-     
     </div>
   );
 };

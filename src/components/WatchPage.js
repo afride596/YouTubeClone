@@ -25,7 +25,7 @@ const WatchPage = () => {
     try {
       const response = await fetch(YOUTUBE_SELECTE_VIDEO_API(id));
       const data = await response.json();
-      console.log();
+      // console.log(data);
       setvideo(data.items[0]);
     } catch (err) {
       console.log("error" + err);

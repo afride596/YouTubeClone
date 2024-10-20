@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Videocards = ({ item }) => {
-  const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!item) return;
-  console.log(item);
+  // console.log(item);
 
   const { snippet, statistics } = item;
   const { thumbnails, channelTitle, publishedAt, localized } = snippet;
@@ -51,12 +51,26 @@ const Videocards = ({ item }) => {
     }
   };
   return (
-    <div className={ `  ${!isMenuOpen ? ' relative -z-20 left-10 rounded-lg cursor-pointer hover:bg-gray-100':'rounded-lg cursor-pointer  hover:bg-gray-100 ' }`}>
-      <div className="" >
-        <img   className={`  h-52 object-cover ${!isMenuOpen ? '  relative w-[430px]  rounded-xl':'w-96 rounded-xl'}`} src={thumbnails.high.url} alt="" />
+    <div
+      className={`  ${
+        !isMenuOpen
+          ? " relative -z-20 left-10 rounded-lg cursor-pointer hover:bg-gray-100"
+          : "rounded-lg cursor-pointer  hover:bg-gray-100 "
+      }`}
+    >
+      <div className="">
+        <img
+          className={`  h-52 object-cover ${
+            !isMenuOpen ? "  relative w-[430px]  rounded-xl" : "w-96 rounded-xl"
+          }`}
+          src={thumbnails.high.url}
+          alt=""
+        />
       </div>
       <div className="py-4">
-        <h3 className="font-semibold  text-lg w-96 break-words ">{localized.title}</h3>
+        <h3 className="font-semibold  text-lg w-96 break-words ">
+          {localized.title}
+        </h3>
         <span>{channelTitle}</span>
         <div className="flex text-[#818181] gap-2 items-center">
           <span>{formatViews(statistics.viewCount)}</span>

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import Commentslist from "./Commentslist";
+import { formatViews } from "../utils/constants";
+import { timeAgo } from "../utils/constants";
 
 const VideoContent = ({ videoData }) => {
   const [des, setdes] = useState(false);
   if (!videoData) return;
   // console.log(videoData);
 
-  const { snippet, statistics } = videoData;
+  const { snippet, statistics, id } = videoData;
   // console.log(snippet);
 
   const {
@@ -17,7 +20,7 @@ const VideoContent = ({ videoData }) => {
     tags,
     localized,
   } = snippet;
-  console.log(description);
+  // console.log(description);
 
   const { viewCount, likeCount, commentCount } = statistics;
   const renderDescription = (text) => {
@@ -112,7 +115,12 @@ const VideoContent = ({ videoData }) => {
         </div>
       </div>
       {/* ------------------------- */}
-      <div className=" z-50  desscription w-[1200px] bg-[#dbd8d8] relative  px-5 py-8 rounded-xl  text-black bg-[]">
+      <div className=" z-50  desscription w-[1200px] bg-[#dbd8d8] relative  px-5 py-1 rounded-xl  text-black bg-[]">
+        <div className="flex gap-4">
+          <h1 className="text-base font-semibold">{formatViews(viewCount)} </h1>
+          <h1 className="text-base font-semibold">{timeAgo(publishedAt)}</h1>
+        </div>
+
         <p className="text-base">
           {des
             ? renderDescription(description)
@@ -125,6 +133,7 @@ const VideoContent = ({ videoData }) => {
       <h1 className="text-black text-xl font-semibold mt-8">
         {commentCount + "      Comments "}
       </h1>
+      <Commentslist id={id} />
     </div>
   );
 };

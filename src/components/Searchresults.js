@@ -32,8 +32,8 @@ const Searchresults = () => {
   };
 
   return (
-    <div className="text-black fixed left-80  border   top-20 overflow: visible -z-10    ">
-      <div className="h-screen w-screen overflow-scroll">
+    <div className="text-black fixed left-80     top-20 overflow: visible -z-10    ">
+      <div className="h-screen w-screen overflow-scroll flex flex-col gap-5 mt-4">
         {searchresult.map((search) => (
           <Link to={"/watch/" + search.id.videoId}>
             <Resultvideo search={search} />
